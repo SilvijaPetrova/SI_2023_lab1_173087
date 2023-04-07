@@ -1,0 +1,294 @@
+
+
+$ mkdir SI_2023_lab1_173087 - Креирање директориум (локален репозиториум) којшто е
+ со исто име како и  оддалечениот репозиториум. 
+
+
+$ cd SI_2023_lab1_173087  - Влегување
+
+
+$ git init
+Initialized empty Git repository in C:/SI_2023_lab1_173087/.git/ -Иницијализирање на Git во директориумот.
+
+Поврзување на локалниот репозиториум со оддалечениот репозиториум 
+$ git remote add origin https://github.com/SilvijaPetrova/SI_2023_lab1_173087.git
+$ git remote -v
+origin  https://github.com/SilvijaPetrova/SI_2023_lab1_173087.git (fetch)
+origin  https://github.com/SilvijaPetrova/SI_2023_lab1_173087.git (push)
+
+
+$ notepad README.md -креирање на датотека
+
+
+$ git add . -додавање на stage
+
+
+$ git commit -m 'Initial commit'     - правење commit со порака 
+[master (root-commit) 4f1d0f1] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+
+
+$ notepad SILab1.java -креирање на фајл 
+
+
+$ git add SILab1.java -додавање на stage 
+
+$ git commit -m 'Add java class'  -правење commit со порака
+[master 82ae673] Add java class
+ 1 file changed, 41 insertions(+)
+ create mode 100644 SILab1.java
+
+
+
+СИНХРОНИЗАЦИЈА СО GITHUB И ДОДАВАЊЕ НА ДАТОТЕКИТЕ 
+$ git clone https://github.com/SilvijaPetrova/SI_2023_lab1_173087.git
+Cloning into 'SI_2023_lab1_173087'...
+warning: You appear to have cloned an empty repository.
+
+
+$ git push --set-upstream origin master
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (6/6), 841 bytes | 280.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/SilvijaPetrova/SI_2023_lab1_173087.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+
+$ git fetch
+
+$ git pull
+Already up to date.
+
+$ git merge
+Already up to date.
+
+КРЕИРАЊЕ НА ГРАНКИ
+$ git branch bug1 
+
+$ git branch bug2
+
+$ git branch bug3
+
+КОИ ГРАНКИ ПОСТОЈАТ И КАДЕ СЕ НАОГАМЕ МОМЕНТАЛНО
+$ git branch
+  bug1
+  bug2
+  bug3
+* master
+
+
+$ git checkout bug1 -ПРЕФРЛУВАЊЕ НА ГРАНКА 1
+Switched to branch 'bug1'
+
+$ git branch
+* bug1
+  bug2
+  bug3
+  master
+
+
+$ git add SILab1.java -ПОПРАВЕНА НАВЕДЕНАТА ГРЕШКА И ДОДАДЕН ДОКУМЕНТОТ НА STAGE
+
+$ git commit -m 'Fix wrong loop for reading'  -COMMIT СО ПОРАКА
+
+[bug1 4d7bb3a] Fix wrong loop for reading
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+ПРЕФРЛУВАЊЕ НА ГРАНКА 2
+$ git checkout bug2
+Switched to branch 'bug2'
+
+Каде се наогаме моментално
+$ git branch
+  bug1
+* bug2
+  bug3
+  master
+
+
+$ git add SILab1.java - поправена грешка и додадено на stage
+
+
+$ git commit -m 'Fix wrong condition in filterOddNumbers' -commit со порака
+[bug2 fec0a29] Fix wrong condition in filterOddNumbers
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+префрлување на гранка 3
+$ git checkout bug3
+Switched to branch 'bug3'
+
+
+каде се наогаме моментално
+$ git branch
+  bug1
+  bug2
+* bug3
+  master
+
+
+$ git add SILab1.java -поправена грешка и додадено на stage 
+
+
+$ git commit -m 'Fix method sumEvenNumbers' -commit со порака
+[bug3 74a56c3] Fix method sumEvenNumbers
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+
+каде се наогаме моментално 
+$ git branch
+  bug1
+  bug2
+* bug3
+  master
+
+
+$ git checkout master  -предрлување на мастер
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+СИНХРОНИЗАЦИЈА 
+$ git push --set-upstream origin master
+Everything up-to-date
+branch 'master' set up to track 'origin/master'.
+
+
+$ git fetch
+
+
+$ git pull
+Already up to date.
+
+
+$ git merge
+Already up to date.
+
+
+ПРЕФРЛУВАЊЕ НА МАСТЕР
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+СПОЈУВАЊЕ НА ГРАНКАТА 1 СО МАСТЕР 
+$ git merge bug1
+Updating 82ae673..4d7bb3a
+Fast-forward
+ SILab1.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+СИНХРОНИЗАЦИЈА И ДОДАВАЊЕ НА ГИТХУБ
+$ git fetch
+
+
+$ git pull
+Already up to date.
+
+$ git merge
+Already up to date.
+
+
+$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 327 bytes | 327.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/SilvijaPetrova/SI_2023_lab1_173087.git
+   82ae673..4d7bb3a  master -> master
+
+
+СПОЈУВАЊЕ НА МАСТЕР СО ГРАНКА 2
+$ git merge bug2
+Auto-merging SILab1.java
+Merge made by the 'ort' strategy.
+ SILab1.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+
+Тука се јавува прозорец со конфликт- решен е со овие чекори:
+
+Press “i” (i for insert)
+Write your merge message - 
+Press “esc” (escape)
+Write “:wq” (write & quit)
+Then press enter
+
+$ git fetch
+
+$ git pull
+Already up to date.
+
+$ git merge
+Already up to date.
+
+$ git push
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 700 bytes | 700.00 KiB/s, done.
+Total 6 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/SilvijaPetrova/SI_2023_lab1_173087.git
+   4d7bb3a..345c899  master -> master
+
+ПРЕФРЛУВАЊЕ НА ГРАНКА 3
+$ git checkout bug3
+Switched to branch 'bug3'
+
+ПРАВЕЊЕ REBASE SO MASTER 
+$ git rebase master
+Successfully rebased and updated refs/heads/bug3.
+
+ПРЕФРЛУВАЊЕ НА МАСТЕР
+$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+
+СПОЈУВАЊЕ НА МАСТЕР СО ГРАНКА 3
+$ git merge bug3
+Updating 345c899..adb22e3
+Fast-forward
+ SILab1.java | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+
+$ git fetch
+
+$ git pull
+Already up to date.
+
+$ git merge
+Already up to date.
+
+$ git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 350 bytes | 350.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/SilvijaPetrova/SI_2023_lab1_173087.git
+   345c899..adb22e3  master -> master
+
+
+$ notepad logs.txt -креирање на датотека
+
+$ notepad 173087.txt  -додавање на датотека
+
+
+
+
+
+
+
